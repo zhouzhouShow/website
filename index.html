@@ -1,312 +1,486 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>首页</title>
-    <link rel="stylesheet" href="frontend/css/swiper-3.4.2.min.css">
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <!--[if lt IE 9]>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>首页</title>
+		<link rel="stylesheet" href="frontend/css/swiper-3.4.2.min.css">
+		<link rel="stylesheet" href="frontend/css/bootstrap.min.css">
+		<link rel="stylesheet" href="frontend/css/style.css">
+		<!--[if lt IE 9]>
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-   
-	<!-- header -->
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<div class="navBox">
-			<div class="navbar-header page-scroll">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html"><img src="frontend/img/logo.png" alt=""><p>全国咨询热线：<span>400-023-619</span></p></a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
-				<ul class="nav navbar-nav navbar-right">
-					<li class=""><a class="page-scroll" href="yjt.html">易景棠 </a></li>
-					<li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
-					<li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
-					<li class=""><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
-					<li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
-					<li class=""><a class="page-scroll" href="#contact">行业专题</a></li>
-					<li class=""><a class="page-scroll" href="#contact">联系我们</a></li>
-					<li class="search">
-						<a class="page-scroll" href="#contact">搜索</a>
-						<img src="frontend/img/search.png" alt="">
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	<!-- /header -->
+	</head>
+	<style type="text/css">
+		.swiperBox .swiper-pagination .swiper-pagination-bullet {
+			display: block;
+			margin-top: 20px;
+			width: 21px;
+			/* height: 15px; */
+			border: 1px solid #CECFE8;
+			border-radius: 0;
+			background: transparent;
+			opacity: 1;
+			transition: all .5s;
+		}
 
-	<!--banner s-->
-    <div class="swiperBox of">
-        <div class="swiper-container of">
-			<div class="swiper-wrapper">
-				<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
-					<div class="container clearPadding">
-						<p class="t1">AMAZING <span>WORLD</span></p>
-						<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
-						<p class="t3">Science and technology empowering the scenic spots and urban space </p>
-					</div>
-				</div>
-				<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
-					<div class="container clearPadding ">
-						<p class="t1">AMAZING <span>WORLD</span></p>
-						<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
-						<p class="t3">Science and technology empowering the scenic spots and urban space </p>
-					</div>
-				</div>
-				<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
-					<div class="container clearPadding ">
-						<p class="t1">AMAZING <span>WORLD</span></p>
-						<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
-						<p class="t3">Science and technology empowering the scenic spots and urban space </p>
-					</div>
-				</div>
-            </div>
-            <div class="swiper-button-prev"></div>
-    		<div class="swiper-button-next"></div>
-        </div>
-        <div class="swiper-pagination"></div>
-        <div class="arrow"></div>
-    </div>
+		.swiperBox .swiper-pagination-bullet {
+			height: 0;
+			border-radius: 0;
+		}
 
-	<!--banner e-->
-   	<section class="container-fluid clearPadding blueBox">
-		<div class="container clearPadding">
-		  	<div class="row clearMargin pb_padding mobie_padding">
-				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img src="frontend/img/me1.png" width="100%" class="pcshow">
-					<img src="frontend/img/me4.png" width="100%" class="mbshow">
+		.swiperBox .swiper-pagination-bullet-active {
+			width: 60px !important;
+		}
+		.dot{
+			position: absolute;
+			right:150px;
+			top:50%;
+			display: flex;
+			flex-direction: column;
+			z-index: 999;
+		}
+		.item {
+			display: flex;
+			align-items: center;
+			margin-bottom:10px;
+		}
+		.item .lin2-box{
+			display: inline-block;
+		}
+		.showItem{
+			visibility: inherit !important;
+		}
+		.hideItem{
+			visibility: hidden !important;;
+		}
+		.item>span:nth-child(1){
+			display: flex;
+			align-items: center;
+			height: 30px;
+			visibility: hidden;
+		}
+		.item>span:nth-child(1)>.lin1{
+			width:7px;
+			height: 2px;
+			display: inline-block;
+			background: #CCCBE6;
+		}
+		.item>span:nth-child(1)>.num{
+			display: inline-block;
+			width:17px;
+			height:17px;
+			line-height:17px;
+			text-align: center;
+			font-size: 15px;
+			background: #F9D3D3;
+			color: #fff;
+			margin-left:5px;
+		}
+		.line37{
+			width:37px !important;
+		}
+		.item .lin2-box{
+			display: flex;
+			justify-content: flex-end;
+			width:40px;
+		}
+		.item .lin2-box .lin2{
+			background: #CCCBE6;
+			width:21px;
+			height: 2px;
+			margin-left:5px;
+			cursor: pointer;
+		}
+		 [v-cloak]{
+		   display: none;
+		 }
+	</style>
+	<body >
+	<div id="app">
+		<!-- header -->
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" v-cloak>
+			<div class="navBox">
+				<div class="navbar-header page-scroll">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true"
+					 aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html">
+						<img :src="pageData?(pageData.site.domain+pageData.site.logo):'frontend/img/logo.png'" alt="">
+						<p>全国咨询热线：<span>{{pageData?pageData.company.phone:'400-023-619'}}</span></p>
+					</a>
 				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img src="frontend/img/me2.png" width="100%" class="pcshow">
-					<img src="frontend/img/me5.png" width="100%" class="mbshow">
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-4">
-					<img src="frontend/img/me3.png" width="100%" class="pcshow">
-					<img src="frontend/img/me6.png" width="100%" class="mbshow">
-				</div>
-		  	</div>
-		</div>
-    </section>
-	<!---->
-    <section class="container-fluid clearPadding">
-		<div class="container clearPadding pb_padding mobie_padding">
-		  	<div class="row clearMargin mt60">
-				<div class="col-md-3 col-sm-3 col-xs-12">
-						<p class="lineTit">关于我们 <span>Introduction</span><p>
-						<span class="spanTxt">Introduction</span>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">陆道股份自成立30年来，以“智慧引领创新、共筑美好生活”为愿景。致力于文体旅科技产业创融发展，构筑智慧体育、数字科技、模块建筑三大核心产业，为千余家企业提供策略咨询、产业导入、内容实施、IP合作等优质服务。</br>陆道·易景棠作为陆道股份数字科技产业核心，创立于2003年。深耕智慧场景发明创造近20年，精研数字化场景文化艺术打造，为1000+需求企业，提供365天持续新鲜内容场景系统化解决方案，为科技文体旅全面创新赋能，是专业的文旅内容提供商。</br>公司将主题创意与前沿科技手段、属地历史文化相融合，以高科技赋能文旅行业，为历史文化古城和景区旅游，提供城市空间更新产品和夜游产品，焕新历史文化名城城市空间，推进景区转型升级。</br>陆道·易景棠，全球新奇趣场景发明家。 
-				</div>
-		  	</div>
-
-		  	<div class="row clearMargin mt60">
-				<div class="col-md-3 col-sm-3 col-xs-12">
-					<p class="lineTit">企业文化 <span>Corporate culture</span><p>
-					<span  class="spanTxt">Corporate culture</span>
-				</div>
-				<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">
-					<div><span>一期一会</span></div></br>
-					<div><span>价值观：</span><p>珍视身边第一次的机会</p></div>
-					<div><span>客户：</span><p>我们珍视每一次为客户服务的机会，以主动的姿态识别和满足客户的需要，我们珍视我们的服务声誉如同珍视我们的生命，用可衡量的标准给客户提供优质的服务体验。</p></div>
-					<div><span>伙伴：</span><p>我们珍视第一次和行业内伙伴合作的机会，尊重他们，重视他们对我们的价值。</p></div>
-					<div><span>同事：</span><p>我们珍视每一次和同事协作的机会，沟通、理解、互相帮助。</p></div>
-				</div>
-		  	</div>
-		</div>
-    </section>
-	<!---->
-	<section class="container-fluid clearPadding blueBg mt60">
-		<div class="container clearPadding pb_padding mobie_padding">
-			<div class="row clearMargin">
-				<div class="col-md-4 col-sm-6 col-xs-6 gugong bos">	
-					<img src="frontend/img/blue.png" width="100%">
-					<div class="ggtext">
-						<p class="ggName">故宫金榜题名</p>
-			            <p class="ggXm ft14">项目：裔绘时尚岛</p>
-			            <p class="ggTmie ft14">时间：2019.4.24</p>
-			            <p class="ggAddress ft14">地址：北京</p>
-			            <p class="ggCont ft14">运用新媒体交互技术，以战略、营销、客户体验为核心，给观众带来最新视觉、科技、新未来的崭新形式。</p>
-					</div>
-					<b class="play"></b>
-				</div>
-				<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img2.png" width="100%"></div>
-				<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img3.png" width="100%"></div>
-				<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img4.png" width="100%"></div>
-				<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img5.png" width="100%"></div>
-				<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img6.png" width="100%"></div>
-			</div>
-			<div class="row shuZi mt60 clearMargin">
-				<div>
-					<p><i class="counter">16</i></p>
-					<span>16年运营经验</span>
-				</div>
-				<div>
-					<p><i class="counter">150</i>+</p>
-					<span>150+ 客户选择</span>
-				</div>
-				<div>
-					<p><i class="counter">1000</i>+</p>
-					<span>行业精品案例</span>
-				</div>
-				<div>
-					<p><i class="counter">365</i>天</p>
-					<span>售后终身服务</span>
+				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
+					<ul class="nav navbar-nav navbar-right" v-for="">
+						<li class=""><a class="page-scroll" href="yjt.html">易景棠 </a></li>
+						<li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
+						<li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
+						<li class=""><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
+						<li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
+						<li class=""><a class="page-scroll" href="hyzt.html">行业专题</a></li>
+						<li class=""><a class="page-scroll" href="#contact">联系我们</a></li>
+						<li class="search">
+							<a class="page-scroll" href="#contact" >搜索</a>
+							<img src="frontend/img/search.png" alt="">
+						</li>
+					</ul>
 				</div>
 			</div>
-		</div>	
-	</section>
+		</nav>
+		<!-- /header -->
 
-	<!---->
-	<section class="container-fluid clearPadding whiteBg">
-		<div class="ztTit">行业专题 <div></div></div>
-		<div class="ztSamllTit">INDUSTRY TOPICS</div>
+		<!--banner s-->
+		<div class="swiperBox of">
+			<div class="swiper-container of">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
+						<div class="container clearPadding">
+							<p class="t1">AMAZING <span>WORLD</span></p>
+							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
+							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
+						</div>
+					</div>
+					<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
+						<div class="container clearPadding ">
+							<p class="t1">AMAZING <span>WORLD</span></p>
+							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
+							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
+						</div>
+					</div>
+					<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
+						<div class="container clearPadding ">
+							<p class="t1">AMAZING <span>WORLD</span></p>
+							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
+							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+			<!-- <div class="swiper-pagination">
 
-		<div class="container clearPadding pb_padding mobie_padding">
-			<div class="row clearMargin">
-				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
-					<div class="listBox fl">
-						<div class="date">
-							<p class="month">JAN</p>
-							<p class="day">22</p>
-						</div>
-						<div class="listRt">
-							<p class="articleName">金榜题名互动式展览详解</p>
-							<p class="articleDate">2019.12.06    中国·北京</p>
-							<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
-							<b></b>
-						</div>
+			</div> -->
+			<div class="arrow"></div>
+			<div class="dot" v-if="showBaner">
+				<div class="item">
+					<span class="left-line">
+						<span class="lin1"></span>
+						<span class="num">01</span>
+					</span>
+					<div class="lin2-box">
+						<span class="lin2 line37"></span>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
-					<div class="listBox fr">
-						<div class="date">
-							<p class="month">JAN</p>
-							<p class="day">22</p>
-						</div>
-						<div class="listRt">
-							<p class="articleName">金榜题名互动式展览详解</p>
-							<p class="articleDate">2019.12.06    中国·北京</p>
-							<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
-							<b></b>
-						</div>
+				<div class="item">
+					<span class="left-line">
+						<span class="lin1"></span>
+						<span class="num">02</span>
+					</span>
+					<div class="lin2-box">
+						<span class="lin2"></span>
 					</div>
 				</div>
-				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
-					<div class="listBox fl">
-						<div class="date">
-							<p class="month">JAN</p>
-							<p class="day">22</p>
-						</div>
-						<div class="listRt">
-							<p class="articleName">金榜题名互动式展览详解</p>
-							<p class="articleDate">2019.12.06    中国·北京</p>
-							<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
-							<b></b>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
-					<div class="listBox fr">
-						<div class="date">
-							<p class="month">JAN</p>
-							<p class="day">22</p>
-						</div>
-						<div class="listRt">
-							<p class="articleName">金榜题名互动式展览详解</p>
-							<p class="articleDate">2019.12.06    中国·北京</p>
-							<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
-							<b></b>
-						</div>
+				<div class="item">
+					<span class="left-line">
+						<span class="lin1"></span>
+						<span class="num">03</span>
+					</span>
+					<div class="lin2-box">
+						<span class="lin2 "></span>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
-	<!---->
-	<section class="container-fluid clearPadding footer">
-		<div class="container clearPadding footerBox">
-			<div class="text-center footTit" >全国咨询热线</div>
-			<div class="text-center footTell" >400-023-6199</div>
-			<div class="text-center footEmail" >E-mail： AW@awchina.cn</div>
-			<div class="row clearMargin">
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footleft">
-					<p class="text-right shanghai">上海公司</p>
-					<p class="text-right">上海市普陀区岚皋路555号品尊国际中心A座25层</p>
-					<p class="text-right">25F,Building A,Pin Zun Central Towers,No 555 Lan Gao Road,</p>
-					<p class="text-right">PuTuo District, Shanghai</p>
-					<p class="text-right qrcodebox"><img src="frontend/img/qrcode1.png" class="qrcode"></p>
-					<p class="text-right qrcode1txt">扫描二维码</br>关注翼飞客智能科技</p>
-				</div>
-				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footright">
-					<p class="text-left beijing">北京公司</p>
-					<p class="text-left">北京市朝阳区通惠河畔龙源文化创意大厦A座4层</p>
-					<p class="text-left">Block A 4F of Longyuan Cultural Creative Building on Tonghui River, </p>
-					<p class="text-left">Chaoyang District, Beijing</p>
-					<p class="text-left qrcodebox"><img src="frontend/img/qrcode2.png" class="qrcode"></p>
-					<p class="text-left qrcode2txt">扫描二维码</br>关注易景堂数字科技</p>
+
+		<!--banner e-->
+		<section class="container-fluid clearPadding blueBox">
+			<div class="container clearPadding">
+				<div class="row clearMargin pb_padding mobie_padding">
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<img src="frontend/img/me1.png" width="100%" class="pcshow">
+						<img src="frontend/img/me4.png" width="100%" class="mbshow">
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<img src="frontend/img/me2.png" width="100%" class="pcshow">
+						<img src="frontend/img/me5.png" width="100%" class="mbshow">
+					</div>
+					<div class="col-md-4 col-sm-4 col-xs-4">
+						<img src="frontend/img/me3.png" width="100%" class="pcshow">
+						<img src="frontend/img/me6.png" width="100%" class="mbshow">
+					</div>
 				</div>
 			</div>
-			<div class="mobileQrcode">
-				<img src="frontend/img/qrcode1.png" style="margin-right: 15px;">
-				<img src="frontend/img/qrcode2.png" style="margin-left: 15px;"></br>
-				<p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
-				<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
+		</section>
+		<!---->
+		<section class="container-fluid clearPadding">
+			<div class="container clearPadding pb_padding mobie_padding">
+				<div class="row clearMargin mt60">
+					<div class="col-md-3 col-sm-3 col-xs-12">
+						<p class="lineTit">关于我们 <span>Introduction</span>
+							<p>
+								<span class="spanTxt">Introduction</span>
+					</div>
+					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">陆道股份自成立30年来，以“智慧引领创新、共筑美好生活”为愿景。致力于文体旅科技产业创融发展，构筑智慧体育、数字科技、模块建筑三大核心产业，为千余家企业提供策略咨询、产业导入、内容实施、IP合作等优质服务。</br>陆道·易景棠作为陆道股份数字科技产业核心，创立于2003年。深耕智慧场景发明创造近20年，精研数字化场景文化艺术打造，为1000+需求企业，提供365天持续新鲜内容场景系统化解决方案，为科技文体旅全面创新赋能，是专业的文旅内容提供商。</br>公司将主题创意与前沿科技手段、属地历史文化相融合，以高科技赋能文旅行业，为历史文化古城和景区旅游，提供城市空间更新产品和夜游产品，焕新历史文化名城城市空间，推进景区转型升级。</br>陆道·易景棠，全球新奇趣场景发明家。
+					</div>
+				</div>
+
+				<div class="row clearMargin mt60">
+					<div class="col-md-3 col-sm-3 col-xs-12">
+						<p class="lineTit">企业文化 <span>Corporate culture</span>
+							<p>
+								<span class="spanTxt">Corporate culture</span>
+					</div>
+					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">
+						<div><span>一期一会</span></div></br>
+						<div><span>价值观：</span>
+							<p>珍视身边第一次的机会</p>
+						</div>
+						<div><span>客户：</span>
+							<p>我们珍视每一次为客户服务的机会，以主动的姿态识别和满足客户的需要，我们珍视我们的服务声誉如同珍视我们的生命，用可衡量的标准给客户提供优质的服务体验。</p>
+						</div>
+						<div><span>伙伴：</span>
+							<p>我们珍视第一次和行业内伙伴合作的机会，尊重他们，重视他们对我们的价值。</p>
+						</div>
+						<div><span>同事：</span>
+							<p>我们珍视每一次和同事协作的机会，沟通、理解、互相帮助。</p>
+						</div>
+					</div>
+				</div>
 			</div>
+		</section>
+		<!---->
+		<section class="container-fluid clearPadding blueBg mt60">
+			<div class="container clearPadding pb_padding mobie_padding">
+				<div class="row clearMargin">
+					<div class="col-md-4 col-sm-6 col-xs-6 gugong bos">
+						<img src="frontend/img/blue.png" width="100%">
+						<div class="ggtext">
+							<p class="ggName">故宫金榜题名</p>
+							<p class="ggXm ft14">项目：裔绘时尚岛</p>
+							<p class="ggTmie ft14">时间：2019.4.24</p>
+							<p class="ggAddress ft14">地址：北京</p>
+							<p class="ggCont ft14">运用新媒体交互技术，以战略、营销、客户体验为核心，给观众带来最新视觉、科技、新未来的崭新形式。</p>
+						</div>
+						<b class="play"></b>
+					</div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img2.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img3.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img4.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img5.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img6.png" width="100%"></div>
+				</div>
+				<div class="row shuZi mt60 clearMargin">
+					<div>
+						<p><i class="counter">16</i></p>
+						<span>16年运营经验</span>
+					</div>
+					<div>
+						<p><i class="counter">150</i>+</p>
+						<span>150+ 客户选择</span>
+					</div>
+					<div>
+						<p><i class="counter">1000</i>+</p>
+						<span>行业精品案例</span>
+					</div>
+					<div>
+						<p><i class="counter">365</i>天</p>
+						<span>售后终身服务</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!---->
+		<section class="container-fluid clearPadding whiteBg">
+			<div class="ztTit">行业专题 <div></div>
+			</div>
+			<div class="ztSamllTit">INDUSTRY TOPICS</div>
+
+			<div class="container clearPadding pb_padding mobie_padding">
+				<div class="row clearMargin">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+						<div class="listBox fl">
+							<div class="date">
+								<p class="month">JAN</p>
+								<p class="day">22</p>
+							</div>
+							<div class="listRt">
+								<p class="articleName">金榜题名互动式展览详解</p>
+								<p class="articleDate">2019.12.06 中国·北京</p>
+								<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
+								<b></b>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+						<div class="listBox fr">
+							<div class="date">
+								<p class="month">JAN</p>
+								<p class="day">22</p>
+							</div>
+							<div class="listRt">
+								<p class="articleName">金榜题名互动式展览详解</p>
+								<p class="articleDate">2019.12.06 中国·北京</p>
+								<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
+								<b></b>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+						<div class="listBox fl">
+							<div class="date">
+								<p class="month">JAN</p>
+								<p class="day">22</p>
+							</div>
+							<div class="listRt">
+								<p class="articleName">金榜题名互动式展览详解</p>
+								<p class="articleDate">2019.12.06 中国·北京</p>
+								<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
+								<b></b>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+						<div class="listBox fr">
+							<div class="date">
+								<p class="month">JAN</p>
+								<p class="day">22</p>
+							</div>
+							<div class="listRt">
+								<p class="articleName">金榜题名互动式展览详解</p>
+								<p class="articleDate">2019.12.06 中国·北京</p>
+								<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
+								<b></b>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!---->
+		<section class="container-fluid clearPadding footer">
+			<div class="container clearPadding footerBox">
+				<div class="text-center footTit">全国咨询热线</div>
+				<div class="text-center footTell">{{pageData?pageData.company.phone:'400-023-619'}}</div>
+				<div class="text-center footEmail">E-mail： {{pageData?pageData.company.email:'AW@awchina.cn'}}</div>
+				<div class="row clearMargin">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footleft">
+						<p class="text-right shanghai">上海公司</p>
+						<p class="text-right">上海市普陀区岚皋路555号品尊国际中心A座25层</p>
+						<p class="text-right">25F,Building A,Pin Zun Central Towers,No 555 Lan Gao Road,</p>
+						<p class="text-right">PuTuo District, Shanghai</p>
+						<p class="text-right qrcodebox"><img :src="pageData?pageData.company.weixin:'frontend/img/qrcode1.png'" class="qrcode"></p>
+						<p class="text-right qrcode1txt">扫描二维码</br>关注翼飞客智能科技</p>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footright">
+						<p class="text-left beijing">北京公司</p>
+						<p class="text-left">北京市朝阳区通惠河畔龙源文化创意大厦A座4层</p>
+						<p class="text-left">Block A 4F of Longyuan Cultural Creative Building on Tonghui River, </p>
+						<p class="text-left">Chaoyang District, Beijing</p>
+						<p class="text-left qrcodebox"><img src="frontend/img/qrcode2.png" class="qrcode"></p>
+						<p class="text-left qrcode2txt">扫描二维码</br>关注易景堂数字科技</p>
+					</div>
+				</div>
+				<div class="mobileQrcode">
+					<img src="frontend/img/qrcode1.png" style="margin-right: 15px;">
+					<img src="frontend/img/qrcode2.png" style="margin-left: 15px;"></br>
+					<p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
+					<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
+				</div>
+			</div>
+			<div class="blackTxt">{{pageData?pageData.site.copyright:''}}</div>
 		</div>
-		<div class="blackTxt">Copyright © www.AWchina.cn 版权所有 上海易景棠数字科技有限公司 沪 ICP 备15026009号</div>
-	</section>
-
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="frontend/js/swiper-3.4.2.min.js"></script>
-	<script type="text/javascript" src="frontend/js/jquery.waypoints.min.js"></script>
-	<script type="text/javascript" src="frontend/js/jquery.counterup.min.js"></script>
-	<script type="text/javascript" src='frontend/js/scrollanim.min.js'></script>
-
-	<script type="text/javascript">
-
-
-        var ww = document.body.clientWidth;
-        if(ww<=1200){
-           window.location.href= "http://www.baidu.com";
-        }
-
-		$('document').ready(function(){
-
-			$('.counter').countUp({
-				time: 1500
-			});
-
-            var mySwiper = new Swiper ('.swiper-container', {
-            	autoplay:4000,
-            	speed:600,
-            	loop:true,
-                direction: 'horizontal', // 垂直切换选项
-                loop: false, 
-                pagination : '.swiper-pagination',
-			    paginationType : 'bullets',
-			    paginationClickable: true,
-			    prevButton:'.swiper-button-prev',
-				nextButton:'.swiper-button-next'
-            }); 
-
+		</section>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="frontend/js/swiper-3.4.2.min.js"></script>
+		<script type="text/javascript" src="frontend/js/jquery.waypoints.min.js"></script>
+		<script type="text/javascript" src="frontend/js/jquery.counterup.min.js"></script>
+		<script type="text/javascript" src='frontend/js/scrollanim.min.js'></script>
+		<script type="text/javascript">
 			
-		});
+			let myVue = new Vue({
+				el: '#app',
+				data(){
+					return {
+						title:'我的天',
+						showBaner:true,
+						pageData:null,
+						domain:'',
+					}
+				},
+				created(){
+					var ww = document.body.clientWidth;
+					if (ww <= 1200) {
+						this.showBaner = false
+					}
+					axios.post('http://www.baodofish.cn/info').then(res=>{
+						if(res.data.code == 1){
+							this.pageData = res.data.data
+							this.domain = res.data.data.domian
+							
+						}
+					})
+					
+				},
+				methods:{
+					sipwer(){
+						this.pageData = 1
+					},
+				}
+			})
+		
 
-	</script>
+			$('document').ready(function() {
 
-  </body>
+				$('.counter').countUp({
+					time: 1500
+				});
+
+				var mySwiper = new Swiper('.swiper-container', {
+					autoplay: 4000,
+					speed: 600,
+					loop: true,
+					direction: 'horizontal', // 垂直切换选项
+					loop: false,
+					pagination: '.swiper-pagination',
+					paginationType: 'bullets',
+					paginationClickable: true,
+					prevButton: '.swiper-button-prev',
+					nextButton: '.swiper-button-next',
+					onSlideChangeStart: function(swiper){
+						// console.log($('.dot .item'))
+						$('.dot .item').each(function(e){
+							let $this  = $(this)
+							let index = $this.index()
+							$this.find('.lin2-box .lin2').removeClass('line37')
+							$this.find('.left-line').removeClass('showItem')
+							if(swiper.activeIndex == index){
+								$this.find('.left-line').addClass('showItem')
+								$this.find('.lin2-box .lin2').addClass('line37')
+							}
+						})
+					}
+				});
+				$('.dot .item').eq(0).find('.left-line').addClass('showItem')
+				
+				$('.dot .item').click(function(e){
+					let $this  = $(this)
+					let index = $this.index()
+					mySwiper.slideTo(index);
+				})
+			});
+		</script>
+
+	</body>
 </html>
