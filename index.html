@@ -95,6 +95,12 @@
 			margin-left:5px;
 			cursor: pointer;
 		}
+		.swiper-slide{
+			background-repeat:no-repeat ;
+			background-size: 100% 100%;
+			background-position: center center;
+		}
+		
 		 [v-cloak]{
 		   display: none;
 		 }
@@ -113,23 +119,23 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="index.html">
-						<img :src="pageData?(pageData.site.domain+pageData.site.logo):'frontend/img/logo.png'" alt="">
-						<p>全国咨询热线：<span>{{pageData?pageData.company.phone:'400-023-619'}}</span></p>
+						<img :src="pageData?(baseUrl+siteInfo.logo):'frontend/img/logo.png'" alt="">
+						<p>全国咨询热线：<span>{{footer?footer.tel:'400-023-619'}}</span></p>
 					</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
 					<ul class="nav navbar-nav navbar-right" v-for="">
-						<li class=""><a class="page-scroll" href="yjt.html">易景棠 </a></li>
-						<li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
+						<li class="" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
+						<!-- <li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
 						<li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
 						<li class=""><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
 						<li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
 						<li class=""><a class="page-scroll" href="hyzt.html">行业专题</a></li>
-						<li class=""><a class="page-scroll" href="#contact">联系我们</a></li>
-						<li class="search">
+						<li class=""><a class="page-scroll" href="#contact">联系我们</a></li> -->
+						<!-- <li class="search">
 							<a class="page-scroll" href="#contact" >搜索</a>
 							<img src="frontend/img/search.png" alt="">
-						</li>
+						</li> -->
 					</ul>
 				</div>
 			</div>
@@ -140,14 +146,16 @@
 		<div class="swiperBox of">
 			<div class="swiper-container of">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
-						<div class="container clearPadding">
-							<p class="t1">AMAZING <span>WORLD</span></p>
-							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
-							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
+					<div class="swiper-slide" v-for="(item ,index ) in banner"   :key="index"  
+						:style="{'backgroundImage': 'url(' +baseUrl+ item.pic + ')'}">
+						<div class="container clearPadding" @click="toUrl(item.link)"> 
+							<p class="t1">{{item.title}}</p>
+							<p class="t2">{{item.subtitle}}</p>
+							
+							<!-- <p class="t3">Science and technology empowering the scenic spots and urban space </p> -->
 						</div>
 					</div>
-					<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
+			<!-- 		<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
 						<div class="container clearPadding ">
 							<p class="t1">AMAZING <span>WORLD</span></p>
 							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
@@ -160,7 +168,7 @@
 							<p class="t2">陆道·易景棠，科技赋能文旅景区及城市空间</p>
 							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="swiper-button-prev"></div>
 				<div class="swiper-button-next"></div>
@@ -169,17 +177,17 @@
 
 			</div> -->
 			<div class="arrow"></div>
-			<div class="dot" v-if="showBaner">
-				<div class="item">
-					<span class="left-line">
+			<div class="dot" v-if="showBaner && banner">
+				<div class="item" v-for="(item ,index ) in banner"   :key="index"  >
+					<span class="left-line" :class="index==0?'showItem':''">
 						<span class="lin1"></span>
-						<span class="num">01</span>
+						<span class="num">0{{index+1}}</span>
 					</span>
 					<div class="lin2-box">
-						<span class="lin2 line37"></span>
+						<span class="lin2" :class="index==0?'line37':''"></span>
 					</div>
 				</div>
-				<div class="item">
+			<!-- 	<div class="item">
 					<span class="left-line">
 						<span class="lin1"></span>
 						<span class="num">02</span>
@@ -196,7 +204,7 @@
 					<div class="lin2-box">
 						<span class="lin2 "></span>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
@@ -222,7 +230,16 @@
 		<!---->
 		<section class="container-fluid clearPadding">
 			<div class="container clearPadding pb_padding mobie_padding">
-				<div class="row clearMargin mt60">
+				<div class="row clearMargin mt60" v-for="(item,index) in companyInfo" :key="index">
+					<div class="col-md-3 col-sm-3 col-xs-12">
+						<p class="lineTit">{{item.title}} <span>Introduction</span>
+							<p>
+								<span class="spanTxt">{{item.tags}}</span>
+					</div>
+					<!-- {{item.description}} -->
+					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu" v-html="item.content"></div>
+				</div>
+			<!-- 	<div class="row clearMargin mt60">
 					<div class="col-md-3 col-sm-3 col-xs-12">
 						<p class="lineTit">关于我们 <span>Introduction</span>
 							<p>
@@ -252,7 +269,7 @@
 						<div><span>同事：</span>
 							<p>我们珍视每一次和同事协作的机会，沟通、理解、互相帮助。</p>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</section>
@@ -369,23 +386,24 @@
 		<section class="container-fluid clearPadding footer">
 			<div class="container clearPadding footerBox">
 				<div class="text-center footTit">全国咨询热线</div>
-				<div class="text-center footTell">{{pageData?pageData.company.phone:'400-023-619'}}</div>
-				<div class="text-center footEmail">E-mail： {{pageData?pageData.company.email:'AW@awchina.cn'}}</div>
+				<div class="text-center footTell">{{footer?footer.tel:''}}</div>
+				<div class="text-center footEmail">E-mail： {{footer?footer.mail:''}}</div>
 				<div class="row clearMargin">
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footleft">
 						<p class="text-right shanghai">上海公司</p>
-						<p class="text-right">上海市普陀区岚皋路555号品尊国际中心A座25层</p>
-						<p class="text-right">25F,Building A,Pin Zun Central Towers,No 555 Lan Gao Road,</p>
-						<p class="text-right">PuTuo District, Shanghai</p>
-						<p class="text-right qrcodebox"><img :src="pageData?pageData.company.weixin:'frontend/img/qrcode1.png'" class="qrcode"></p>
+						<p class="text-right">{{footer?footer.mali:''}}</p>
+						<p class="text-right">{{footer?footer.sh_addr:''}}</p>
+						<p class="text-right">{{footer?footer.sh_addr_en:''}}</p>
+						<!-- <p class="text-right">PuTuo District, Shanghai</p> -->
+						<p class="text-right qrcodebox"><img :src="footer?baseUrl+footer.sh_qrcode:''" class="qrcode"></p>
 						<p class="text-right qrcode1txt">扫描二维码</br>关注翼飞客智能科技</p>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footright">
 						<p class="text-left beijing">北京公司</p>
-						<p class="text-left">北京市朝阳区通惠河畔龙源文化创意大厦A座4层</p>
-						<p class="text-left">Block A 4F of Longyuan Cultural Creative Building on Tonghui River, </p>
-						<p class="text-left">Chaoyang District, Beijing</p>
-						<p class="text-left qrcodebox"><img src="frontend/img/qrcode2.png" class="qrcode"></p>
+						<p class="text-left">{{footer?footer.bj_addr:''}}</p>
+						<p class="text-left">{{footer?footer.bj_addr_en:''}} </p>
+						<!-- <p class="text-left">Chaoyang District, Beijing</p> -->
+						<p class="text-left qrcodebox"><img :src="footer?baseUrl+footer.bj_qrcode:''" class="qrcode"></p>
 						<p class="text-left qrcode2txt">扫描二维码</br>关注易景堂数字科技</p>
 					</div>
 				</div>
@@ -396,17 +414,19 @@
 					<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
 				</div>
 			</div>
-			<div class="blackTxt">{{pageData?pageData.site.copyright:''}}</div>
+			<div class="blackTxt">{{siteInfo?siteInfo.copyright:''}}</div>
 		</div>
 		</section>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src='utils.js'></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="frontend/js/swiper-3.4.2.min.js"></script>
 		<script type="text/javascript" src="frontend/js/jquery.waypoints.min.js"></script>
 		<script type="text/javascript" src="frontend/js/jquery.counterup.min.js"></script>
 		<script type="text/javascript" src='frontend/js/scrollanim.min.js'></script>
+		
 		<script type="text/javascript">
 			
 			let myVue = new Vue({
@@ -416,7 +436,13 @@
 						title:'我的天',
 						showBaner:true,
 						pageData:null,
+						banner:[],
+						companyInfo:null,
+						menu:[],
 						domain:'',
+						footer:null,
+						siteInfo:null,
+						baseUrl:base.domain
 					}
 				},
 				created(){
@@ -424,11 +450,20 @@
 					if (ww <= 1200) {
 						this.showBaner = false
 					}
-					axios.post('http://www.baodofish.cn/info').then(res=>{
+					axios.post('http://awboot.dbassets.cn/api.php/Newtem/index').then(res=>{
 						if(res.data.code == 1){
-							this.pageData = res.data.data
-							this.domain = res.data.data.domian
-							
+							console.log(res.data)
+							let data = res.data.data
+							this.baseUrl = data.site_info.domain
+							this.pageData = data
+							this.banner = data.slider
+							this.companyInfo = data.company_info
+							this.menu = data.menu
+							this.footer = data.footer
+							this.siteInfo = data.site_info
+							setTimeout(()=>{
+								this.reload()
+							},1000)
 						}
 					})
 					
@@ -437,49 +472,57 @@
 					sipwer(){
 						this.pageData = 1
 					},
+					toUrl(url){
+						if(url){
+							location.href=url
+						}
+					},
+					reload(){
+						// $('document').ready(function() {
+							console.log(1)
+							$('.counter').countUp({
+								time: 1500
+							});
+						
+							var mySwiper = new Swiper('.swiper-container', {
+								autoplay: 4000,
+								speed: 600,
+								loop: true,
+								direction: 'horizontal', // 垂直切换选项
+								loop: false,
+								pagination: '.swiper-pagination',
+								paginationType: 'bullets',
+								paginationClickable: true,
+								prevButton: '.swiper-button-prev',
+								nextButton: '.swiper-button-next',
+								onSlideChangeStart: function(swiper){
+									// console.log($('.dot .item'))
+									$('.dot .item').each(function(e){
+										let $this  = $(this)
+										let index = $this.index()
+										$this.find('.lin2-box .lin2').removeClass('line37')
+										$this.find('.left-line').removeClass('showItem')
+										if(swiper.activeIndex == index){
+											$this.find('.left-line').addClass('showItem')
+											$this.find('.lin2-box .lin2').addClass('line37')
+										}
+									})
+								}
+							});
+							$('.dot .item').eq(0).find('.left-line').addClass('showItem')
+							
+							$('.dot .item').click(function(e){
+								let $this  = $(this)
+								let index = $this.index()
+								mySwiper.slideTo(index);
+							})
+						// });
+					}
 				}
 			})
 		
 
-			$('document').ready(function() {
-
-				$('.counter').countUp({
-					time: 1500
-				});
-
-				var mySwiper = new Swiper('.swiper-container', {
-					autoplay: 4000,
-					speed: 600,
-					loop: true,
-					direction: 'horizontal', // 垂直切换选项
-					loop: false,
-					pagination: '.swiper-pagination',
-					paginationType: 'bullets',
-					paginationClickable: true,
-					prevButton: '.swiper-button-prev',
-					nextButton: '.swiper-button-next',
-					onSlideChangeStart: function(swiper){
-						// console.log($('.dot .item'))
-						$('.dot .item').each(function(e){
-							let $this  = $(this)
-							let index = $this.index()
-							$this.find('.lin2-box .lin2').removeClass('line37')
-							$this.find('.left-line').removeClass('showItem')
-							if(swiper.activeIndex == index){
-								$this.find('.left-line').addClass('showItem')
-								$this.find('.lin2-box .lin2').addClass('line37')
-							}
-						})
-					}
-				});
-				$('.dot .item').eq(0).find('.left-line').addClass('showItem')
-				
-				$('.dot .item').click(function(e){
-					let $this  = $(this)
-					let index = $this.index()
-					mySwiper.slideTo(index);
-				})
-			});
+			
 		</script>
 
 	</body>
