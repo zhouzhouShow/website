@@ -232,27 +232,26 @@
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin mt60" v-for="(item,index) in companyInfo" :key="index">
 					<div class="col-md-3 col-sm-3 col-xs-12">
-						<p class="lineTit">{{item.title}} <span>Introduction</span>
-							<p>
-								<span class="spanTxt">{{item.tags}}</span>
+						<p class="lineTit">{{item.title}}
+							</p>
+							<span class="spanTxt">{{item.tags}}</span>
 					</div>
-					<!-- {{item.description}} -->
 					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu" v-html="item.content"></div>
 				</div>
-			<!-- 	<div class="row clearMargin mt60">
+				<!-- <div class="row clearMargin mt60">
 					<div class="col-md-3 col-sm-3 col-xs-12">
 						<p class="lineTit">关于我们 <span>Introduction</span>
-							<p>
+							</p>
 								<span class="spanTxt">Introduction</span>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">陆道股份自成立30年来，以“智慧引领创新、共筑美好生活”为愿景。致力于文体旅科技产业创融发展，构筑智慧体育、数字科技、模块建筑三大核心产业，为千余家企业提供策略咨询、产业导入、内容实施、IP合作等优质服务。</br>陆道·易景棠作为陆道股份数字科技产业核心，创立于2003年。深耕智慧场景发明创造近20年，精研数字化场景文化艺术打造，为1000+需求企业，提供365天持续新鲜内容场景系统化解决方案，为科技文体旅全面创新赋能，是专业的文旅内容提供商。</br>公司将主题创意与前沿科技手段、属地历史文化相融合，以高科技赋能文旅行业，为历史文化古城和景区旅游，提供城市空间更新产品和夜游产品，焕新历史文化名城城市空间，推进景区转型升级。</br>陆道·易景棠，全球新奇趣场景发明家。
 					</div>
-				</div>
+				</div> -->
 
-				<div class="row clearMargin mt60">
+	<!-- 			<div class="row clearMargin mt60">
 					<div class="col-md-3 col-sm-3 col-xs-12">
 						<p class="lineTit">企业文化 <span>Corporate culture</span>
-							<p>
+							</p>
 								<span class="spanTxt">Corporate culture</span>
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">
@@ -269,8 +268,8 @@
 						<div><span>同事：</span>
 							<p>我们珍视每一次和同事协作的机会，沟通、理解、互相帮助。</p>
 						</div>
-					</div> -->
-				</div>
+					</div>
+				</div> -->
 			</div>
 		</section>
 		<!---->
@@ -466,6 +465,14 @@
 							},1000)
 						}
 					})
+					// axios.post('http://awboot.dbassets.cn/api.php/Newtem/index').then(res=>{
+					// 	if(res.data.code == 1){
+					// 		console.log(res.data)
+						
+					// 	}
+					// })
+					
+
 					
 				},
 				methods:{
