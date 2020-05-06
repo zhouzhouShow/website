@@ -23,33 +23,28 @@
 
 
   <!-- header -->
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navBox">
-      <div class="navbar-header page-scroll">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html"><img src="frontend/img/logo.png" alt=""><p>全国咨询热线：<span>400-023-619</span></p></a>
-      </div>
-      <div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
-        <ul class="nav navbar-nav navbar-right">
-          <li class=""><a class="page-scroll" href="yjt.html">易景棠 </a></li>
-          <li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
-          <li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
-          <li class="active"><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
-          <li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
-          <li class=""><a class="page-scroll" href="hyzt.html">行业专题</a></li>
-          <li class=""><a class="page-scroll" href="#contact">联系我们</a></li>
-          <li class="search">
-            <a class="page-scroll" href="#contact">搜索</a>
-            <img src="frontend/img/search.png" alt="">
-          </li>
-        </ul>
-      </div>
-    </div>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation" v-cloak>
+  	<div class="navBox">
+  		<div class="navbar-header page-scroll">
+  			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true"
+  			 aria-controls="navbar">
+  				<span class="sr-only">Toggle navigation</span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  				<span class="icon-bar"></span>
+  			</button>
+  			<a class="navbar-brand" href="index.html">
+  				<img :src="pageData?(baseUrl+siteInfo.logo):'frontend/img/logo.png'" alt="">
+  				<p>全国咨询热线：<span>{{footer?footer.tel:'400-023-619'}}</span></p>
+  			</a>
+  		</div>
+  		<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
+  			<ul class="nav navbar-nav navbar-right" >
+  				<li class="" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
+  			</ul>
+  		
+  		</div>
+  	</div>
   </nav>
   <!--易飞客-->
   <section class="container-fluid clearPadding martop of">

@@ -101,13 +101,22 @@
 			background-position: center center;
 		}
 		
-		 [v-cloak]{
-		   display: none;
-		 }
+		
 	</style>
 	<body >
-	<div id="app">
+	<div id="app" v-cloak>
 		<!-- header -->
+		
+		<!-- <li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
+		<li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
+		<li class=""><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
+		<li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
+		<li class=""><a class="page-scroll" href="hyzt.html">行业专题</a></li>
+		<li class=""><a class="page-scroll" href="#contact">联系我们</a></li> -->
+		<!-- <li class="search">
+			<a class="page-scroll" href="#contact" >搜索</a>
+			<img src="frontend/img/search.png" alt="">
+		</li> -->
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" v-cloak>
 			<div class="navBox">
 				<div class="navbar-header page-scroll">
@@ -124,22 +133,14 @@
 					</a>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
-					<ul class="nav navbar-nav navbar-right" v-for="">
+					<ul class="nav navbar-nav navbar-right" >
 						<li class="" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
-						<!-- <li class=""><a class="page-scroll" href="hdty.html">互动投影</a></li>
-						<li class=""><a class="page-scroll" href="hdpm.html">互动屏幕</a></li>
-						<li class=""><a class="page-scroll" href="wljq.html">文旅景区 </a></li>
-						<li class=""><a class="page-scroll" href="xssb.html">显示设备</a></li>
-						<li class=""><a class="page-scroll" href="hyzt.html">行业专题</a></li>
-						<li class=""><a class="page-scroll" href="#contact">联系我们</a></li> -->
-						<!-- <li class="search">
-							<a class="page-scroll" href="#contact" >搜索</a>
-							<img src="frontend/img/search.png" alt="">
-						</li> -->
 					</ul>
+				
 				</div>
 			</div>
 		</nav>
+		
 		<!-- /header -->
 
 		<!--banner s-->
@@ -228,7 +229,7 @@
 			</div>
 		</section>
 		<!---->
-		<section class="container-fluid clearPadding">
+		<section class="container-fluid clearPadding" v-cloak>
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin mt60" v-for="(item,index) in companyInfo" :key="index">
 					<div class="col-md-3 col-sm-3 col-xs-12">
@@ -238,38 +239,7 @@
 					</div>
 					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu" v-html="item.content"></div>
 				</div>
-				<!-- <div class="row clearMargin mt60">
-					<div class="col-md-3 col-sm-3 col-xs-12">
-						<p class="lineTit">关于我们 <span>Introduction</span>
-							</p>
-								<span class="spanTxt">Introduction</span>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">陆道股份自成立30年来，以“智慧引领创新、共筑美好生活”为愿景。致力于文体旅科技产业创融发展，构筑智慧体育、数字科技、模块建筑三大核心产业，为千余家企业提供策略咨询、产业导入、内容实施、IP合作等优质服务。</br>陆道·易景棠作为陆道股份数字科技产业核心，创立于2003年。深耕智慧场景发明创造近20年，精研数字化场景文化艺术打造，为1000+需求企业，提供365天持续新鲜内容场景系统化解决方案，为科技文体旅全面创新赋能，是专业的文旅内容提供商。</br>公司将主题创意与前沿科技手段、属地历史文化相融合，以高科技赋能文旅行业，为历史文化古城和景区旅游，提供城市空间更新产品和夜游产品，焕新历史文化名城城市空间，推进景区转型升级。</br>陆道·易景棠，全球新奇趣场景发明家。
-					</div>
-				</div> -->
-
-	<!-- 			<div class="row clearMargin mt60">
-					<div class="col-md-3 col-sm-3 col-xs-12">
-						<p class="lineTit">企业文化 <span>Corporate culture</span>
-							</p>
-								<span class="spanTxt">Corporate culture</span>
-					</div>
-					<div class="col-md-9 col-sm-9 col-xs-12 lineTest txtJu">
-						<div><span>一期一会</span></div></br>
-						<div><span>价值观：</span>
-							<p>珍视身边第一次的机会</p>
-						</div>
-						<div><span>客户：</span>
-							<p>我们珍视每一次为客户服务的机会，以主动的姿态识别和满足客户的需要，我们珍视我们的服务声誉如同珍视我们的生命，用可衡量的标准给客户提供优质的服务体验。</p>
-						</div>
-						<div><span>伙伴：</span>
-							<p>我们珍视第一次和行业内伙伴合作的机会，尊重他们，重视他们对我们的价值。</p>
-						</div>
-						<div><span>同事：</span>
-							<p>我们珍视每一次和同事协作的机会，沟通、理解、互相帮助。</p>
-						</div>
-					</div>
-				</div> -->
+			
 			</div>
 		</section>
 		<!---->
@@ -315,28 +285,28 @@
 		</section>
 
 		<!---->
-		<section class="container-fluid clearPadding whiteBg">
+		<section class="container-fluid clearPadding whiteBg" v-cloak>
 			<div class="ztTit">行业专题 <div></div>
 			</div>
 			<div class="ztSamllTit">INDUSTRY TOPICS</div>
 
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin">
-					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox" v-for="(item,index) in industry" :key="index">
 						<div class="listBox fl">
 							<div class="date">
-								<p class="month">JAN</p>
-								<p class="day">22</p>
+								<p class="month">{{getDate(item.date).str}}</p>
+								<p class="day">{{getDate(item.date).date}}</p>
 							</div>
 							<div class="listRt">
-								<p class="articleName">金榜题名互动式展览详解</p>
-								<p class="articleDate">2019.12.06 中国·北京</p>
-								<p class="articleCont line2">金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一金榜题名互动式展览是故宫打造的首个“数字·实景·剧情”互动展览。本展是故宫博物院发布的三个主题性综合文创项目之一</p>
+								<p class="articleName">{{item.title}}</p>
+								<p class="articleDate">{{item.date}}</p>
+								<p class="articleCont line2">{{item.description}}</p>
 								<b></b>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
+					<!-- <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox">
 						<div class="listBox fr">
 							<div class="date">
 								<p class="month">JAN</p>
@@ -377,12 +347,12 @@
 								<b></b>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</section>
 		<!---->
-		<section class="container-fluid clearPadding footer">
+		<section class="container-fluid clearPadding footer" v-cloak>
 			<div class="container clearPadding footerBox">
 				<div class="text-center footTit">全国咨询热线</div>
 				<div class="text-center footTell">{{footer?footer.tel:''}}</div>
@@ -414,8 +384,9 @@
 				</div>
 			</div>
 			<div class="blackTxt">{{siteInfo?siteInfo.copyright:''}}</div>
-		</div>
+		
 		</section>
+	</div>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src='utils.js'></script>
@@ -441,7 +412,10 @@
 						domain:'',
 						footer:null,
 						siteInfo:null,
-						baseUrl:base.domain
+						baseUrl:'',
+						industry:[],
+						DateStrList:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+						
 					}
 				},
 				created(){
@@ -465,17 +439,29 @@
 							},1000)
 						}
 					})
-					// axios.post('http://awboot.dbassets.cn/api.php/Newtem/index').then(res=>{
-					// 	if(res.data.code == 1){
-					// 		console.log(res.data)
-						
-					// 	}
-					// })
+					axios.post('http://awboot.dbassets.cn/api.php/list/24').then(res=>{
+						if(res.data.code == 1){
+							console.log(res.data)
+							this.industry = res.data.data
+						}
+					})
 					
 
 					
 				},
 				methods:{
+					getDate(date){
+						// console.log(date)
+						let obj = null
+						if(date){
+							let time = new Date(date)
+							obj = {}
+							obj.date = time.getDate()<10? '0'+ time.getDate() : time.getDate()
+							obj.str = this.DateStrList[time .getMonth()]
+						}
+						console.log(obj)
+						return obj
+					},
 					sipwer(){
 						this.pageData = 1
 					},

@@ -1,5 +1,7 @@
 
-
+ [v-cloak]{
+		 display: none;
+	 }
 /**重置**/
 .clearMargin{
     margin-left: 0;
