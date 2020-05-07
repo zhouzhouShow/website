@@ -40,7 +40,7 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
 						<ul class="nav navbar-nav navbar-right">
-							<li class="" v-for="(item,index) in menu " :key=" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}}
+							<li :class="index==1?'active':''"v-for="(item,index) in menu " :key=" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}}
 								</a></li>
 						</ul>
 
@@ -58,12 +58,12 @@
 				</div>
 				<div class="ztSamllTit">INTERACTIVE PROJECTION</div>
 
-				<div class="container clearPadding comBox">
+				<div class="container clearPadding comBox" v-cloak>
 					<div class="row clearMargin">
 						<!--标题-->
 						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-5 comlist">
 							<ul class="expmenu lf tab-hd">
-								<li @click="changeIndex(index)" v-for="(item,index) in industry" :class="index==0?'tabHdActive' :''"><span>{{item.sortname}}</span></li>
+								<li @click="changeIndex(index)" v-for="(item,index) in industry" :class="index==chooseIndex?'tabHdActive' :''"><span>{{item.sortname}}</span></li>
 
 							</ul>
 						</div>
@@ -79,12 +79,8 @@
 						<div class="col-lg-6 col-md-8 col-sm-8 col-xs-12 comswiper">
 							<div style="max-width:100%;margin:0 auto;">
 								<div class="ms-showcase2-template ms-dir-v">
-									<div class="master-slider ms-skin-default" id="masterslider" v-if="slider.length!=0">
-										<div class="ms-slide" v-for="(item,index) in slider">
-											<img src="images/loading-2.gif" :data-src="baseUrl+item" />
-											<img class="ms-thumb" :src="baseUrl+item" alt="thumb" />
-										</div>
-
+									<div class="master-slider ms-skin-default" id="masterslider" >
+										
 									</div>
 								</div>
 							</div>
@@ -146,6 +142,13 @@
 		<script type='text/javascript' src='frontend/js/jquery.easing.min.js'></script>
 
 		<script type="text/javascript">
+			function tabs(tabTit, on, tabCon) {
+				$(tabTit).children().click(function() {
+					$(this).addClass(on).siblings().removeClass(on);
+					var index = $(tabTit).children().index(this);
+					$(tabCon).children().eq(index).show().siblings().hide();
+				});
+			};
 			let myVue = new Vue({
 				el: '#app',
 				data() {
@@ -168,16 +171,7 @@
 					}
 				},
 				created() {
-					this.sliderSb = new MasterSlider()
-					this.sliderSb.control('arrows');
-					this.sliderSb.control('scrollbar', {
-						dir: 'h'
-					});
-					this.sliderSb.control('thumblist', {
-						autohide: false,
-						dir: 'h',
-						arrows: true
-					});
+					
 					var ww = document.body.clientWidth;
 					if (ww <= 1200) {
 						this.showBaner = false
@@ -192,9 +186,6 @@
 							this.menu = data.menu
 							this.footer = data.footer
 							this.siteInfo = data.site_info
-							setTimeout(() => {
-								// this.reload()
-							}, 200)
 						}
 					})
 					axios.post('http://awboot.dbassets.cn/api.php/list/2').then(res => {
@@ -203,8 +194,12 @@
 							this.industry = res.data.data
 							this.Detail = this.industry[this.chooseIndex]
 							this.slider = this.getBanner(this.industry[this.chooseIndex].pics)
+							
+							
+							tabs(".tab-hd", "tabHdActive", ".tab-bd");
+							
 							setTimeout(() => {
-								this.reload()
+								this.reload(this.slider)
 							}, 500)
 							// this.getDetail(this.industry[0].scode)
 						}
@@ -215,23 +210,12 @@
 				},
 				methods: {
 					changeIndex(index){
-					
+						$('#masterslider').html('')
 						this.chooseIndex = index
 						this.Detail = this.industry[this.chooseIndex]
 						this.slider = []
 						this.slider = this.getBanner(this.industry[this.chooseIndex].pics)
-						this.sliderSb= null
-						this.sliderSb = new MasterSlider()
-						console.log($('#masterslider'))
-						// this.sliderSb.control('arrows');
-						// this.sliderSb.control('scrollbar', {
-						// 	dir: 'h'
-						// });
-						// this.sliderSb.control('thumblist', {
-						// 	autohide: false,
-						// 	dir: 'h',
-						// 	arrows: true
-						// });
+						this.reload(this.slider)
 						setTimeout(() => {
 							this.reload()
 						}, 1000)
@@ -241,7 +225,7 @@
 						let arr = []
 						if (str) {
 							arr = str.split(',')
-							console.log(str)
+							// console.log(str)
 						}
 
 						return arr
@@ -276,29 +260,37 @@
 							location.href = url
 						}
 					},
-					reload() {
+					reload(list) {
+						let listB = list
+						// console.log(listB)
+						let baseUrl = this.baseUrl
+						var sliderSb = new MasterSlider()
+						sliderSb.control('arrows');
+						sliderSb.control('scrollbar', {
+							dir: 'v'
+						});
+						sliderSb.control('thumblist', {
+							autohide: false,
+							dir: 'h',
+							arrows: true
+						});
+						for(let i in listB){                 //将数据先动态加载
+							// console.log(i,listB.length)
+									var strlist = '<div class="ms-slide">'+
+										          '<img src="images/loading-2.gif" data-src="'+baseUrl+listB[i]+'" alt="lorem ipsum dolor sit"/>'+ 
+												  '<img class="ms-thumb" src="'+baseUrl+listB[i]+'" alt="thumb" />'+ 
+												  '</div>';
+								$('#masterslider').append(strlist);
+									if(i==listB.length-1){
+												sliderSb.setup('masterslider', {
+													width: 600,
+													height: 500,
+													space: 3,
+													view:'basic'
+												});
+										}	
+									}
 						
-						this.sliderSb.setup('masterslider', {
-							width: 600,
-							height: 500,
-							space: 3,
-							view:'basic'
-						});
-						this.sliderSb.api.addEventListener(MSSliderEvent.INIT , function(){
-							console.log('重复啊了')
-						    // dispatches when the slider's current slide change starts.
-						});
-
-						function tabs(tabTit, on, tabCon) {
-							$(tabTit).children().click(function() {
-								$(this).addClass(on).siblings().removeClass(on);
-								var index = $(tabTit).children().index(this);
-								$(tabCon).children().eq(index).show().siblings().hide();
-							});
-						};
-
-						tabs(".tab-hd", "tabHdActive", ".tab-bd");
-
 					}
 				}
 			})

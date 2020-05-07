@@ -40,7 +40,7 @@
   		</div>
   		<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
   			<ul class="nav navbar-nav navbar-right" >
-  				<li class="" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
+  				<li :class="index==0?'active':''" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
   			</ul>
   		
   		</div>
@@ -73,7 +73,8 @@
           <div class="row clearMargin mt60">
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
                   <ul class="expmenu lf tab-hd" style="width:85%;">
-                        <li v-for="(item,index) in mantouList" :key="index" @click="getMv(item.scode)" :class="index==0?'tabHdActive2':''"><span>{{item.name}}</span></li>
+										
+                        <li v-for="(item,index) in mantouList" :key="index" @click="getMv(item.scode,index)" :class="index==(chooseIndex?chooseIndex:0)?'tabHdActive2':''"><span>{{item.name}}</span></li>
                   </ul>
             </div>
 						<div class="col-lg-8 col-md-6 col-sm-6 col-xs-6 videobox">
@@ -192,6 +193,7 @@
 			el: '#app',
 			data(){
 				return {
+					chooseIndex: 0 ,
 					title:'我的天',
 					showBaner:true,
 					pageData:null,
@@ -205,7 +207,8 @@
 					mantouList:[],
 					DateStrList:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
 					mvList:[],
-					slider:null
+					slider:null,
+					
 				}
 			},
 			created(){
@@ -244,7 +247,8 @@
 				
 			},
 			methods:{
-				getMv(id){
+				getMv(id,index){
+					this.chooseIndex = index
 					this.mvList = []
 					axios.post('http://awboot.dbassets.cn/api.php/list/'+id).then(res=>{
 						if(res.data.code == 1){
