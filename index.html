@@ -134,7 +134,7 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" style="">
 					<ul class="nav navbar-nav navbar-right" >
-						<li class="" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
+						<li class="" v-for="(item,index) in menu " @click="toPage(item.filename)" :key =" index"><a class="page-scroll" >{{item.name}} </a></li>
 					</ul>
 				
 				</div>
@@ -450,6 +450,16 @@
 					
 				},
 				methods:{
+					toPage(url){
+						if(url=='toFooter'){
+							this.scrollToFooter()
+						}else{
+							location.href = url+'.html'
+						}
+					},
+					scrollToFooter(){
+						$('html,body').animate({scrollTop:$('.footer').offset().top}, 500);
+					},
 					getDate(date){
 						// console.log(date)
 						let obj = null

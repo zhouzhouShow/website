@@ -40,7 +40,7 @@
   		</div>
   		<div id="navbar" class="navbar-collapse collapse" aria-expanded="true" >
   			<ul class="nav navbar-nav navbar-right" >
-  				<li :class="index==2?'active':''" v-for="(item,index) in menu " :key =" index"><a class="page-scroll" :href="item.filename+'.html'">{{item.name}} </a></li>
+  				<li :class="index==2?'active':''" @click="toPage(item.filename)"  v-for="(item,index) in menu " :key =" index"><a class="page-scroll" >{{item.name}} </a></li>
   			</ul>
   		
   		</div>
@@ -186,7 +186,7 @@
 							this.siteInfo = data.site_info
 						}
 					})
-					axios.post('http://awboot.dbassets.cn/api.php/list/5').then(res => {
+					axios.post('http://awboot.dbassets.cn/api.php/list/5/num/9999').then(res => {
 						if (res.data.code == 1) {
 							console.log(res.data)
 							this.industry = res.data.data
@@ -207,6 +207,16 @@
 
 				},
 				methods: {
+					toPage(url){
+						if(url=='toFooter'){
+							this.scrollToFooter()
+						}else{
+							location.href = url+'.html'
+						}
+					},
+					scrollToFooter(){
+						$('html,body').animate({scrollTop:$('.footer').offset().top}, 500);
+					},
 					changeIndex(index){
 						$('#masterslider').html('')
 						this.chooseIndex = index
@@ -230,7 +240,7 @@
 					},
 					getDetail(id) {
 						this.mvList = []
-						axios.post('http://awboot.dbassets.cn/api.php/list/' + id).then(res => {
+						axios.post('http://awboot.dbassets.cn/api.php/list/' + id+'/num/9999').then(res => {
 							if (res.data.code == 1) {
 								console.log(res.data)
 								this.Detail = res.data.data
