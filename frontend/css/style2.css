@@ -102,6 +102,10 @@
 	.comcont p {
 	    font-size: 14px;
 	}
+	.ms-showcase2-template.ms-dir-v {
+		padding-right:0;
+		/* padding-bottom:0!important */
+	}
 	.comcont p.colorBlue{
 	    font-size: 16px;
 	}

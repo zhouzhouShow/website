@@ -20,13 +20,38 @@
     <![endif]-->
   </head>
 	<style type="text/css">
+		@media (max-width: 768px){
 			.hoverbox img{
-				height: 330px;
+				height: 110px !important;
 				object-fit: cover;
 			}
-			.bigTopBox{
+			img.bigTopBox{
+				height: 232px !important;
+			}
+		}
+		@media (max-width: 1200px){
+			.hoverbox img{
+				height: 182px;
+				object-fit: cover;
+			}
+			img.bigTopBox{
+				height: 232px !important;
+			}
+		}
+		@media (min-width: 1201px){
+			.hoverbox img{
+				height: 330px;
+				/* object-fit: cover; */
+			}
+			img.bigTopBox{
 				height: 420px !important;
 			}
+		}
+			/* .hoverbox img{
+				height: 330px;
+				object-fit: cover;
+			} */
+			
 	</style>
   <body>
 
@@ -145,37 +170,38 @@
         </div>
   </section>
   <!---->
-  <section class="container-fluid clearPadding footer">
-    <div class="container clearPadding footerBox">
-      <div class="text-center footTit" >全国咨询热线</div>
-      <div class="text-center footTell" >400-023-6199</div>
-      <div class="text-center footEmail" >E-mail： AW@awchina.cn</div>
-      <div class="row clearMargin">
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footleft">
-          <p class="text-right shanghai">上海公司</p>
-          <p class="text-right">上海市普陀区岚皋路555号品尊国际中心A座25层</p>
-          <p class="text-right">25F,Building A,Pin Zun Central Towers,No 555 Lan Gao Road,</p>
-          <p class="text-right">PuTuo District, Shanghai</p>
-          <p class="text-right qrcodebox"><img src="frontend/img/qrcode1.png" class="qrcode"></p>
-          <p class="text-right qrcode1txt">扫描二维码</br>关注翼飞客智能科技</p>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footright">
-          <p class="text-left beijing">北京公司</p>
-          <p class="text-left">北京市朝阳区通惠河畔龙源文化创意大厦A座4层</p>
-          <p class="text-left">Block A 4F of Longyuan Cultural Creative Building on Tonghui River, </p>
-          <p class="text-left">Chaoyang District, Beijing</p>
-          <p class="text-left qrcodebox"><img src="frontend/img/qrcode2.png" class="qrcode"></p>
-          <p class="text-left qrcode2txt">扫描二维码</br>关注易景堂数字科技</p>
-        </div>
-      </div>
-      <div class="mobileQrcode">
-        <img src="frontend/img/qrcode1.png" style="margin-right: 15px;">
-        <img src="frontend/img/qrcode2.png" style="margin-left: 15px;"></br>
-        <p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
-        <p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
-      </div>
-    </div>
-    <div class="blackTxt">Copyright © www.AWchina.cn 版权所有 上海易景棠数字科技有限公司 沪 ICP 备15026009号</div>
+  <section class="container-fluid clearPadding footer" v-cloak>
+  	<div class="container clearPadding footerBox">
+  		<div class="text-center footTit">全国咨询热线</div>
+  		<div class="text-center footTell">{{footer?footer.tel:''}}</div>
+  		<div class="text-center footEmail">E-mail： {{footer?footer.mail:''}}</div>
+  		<div class="row clearMargin">
+  			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footleft">
+  				<p class="text-right shanghai">上海公司</p>
+  				<p class="text-right">{{footer?footer.mali:''}}</p>
+  				<p class="text-right">{{footer?footer.sh_addr:''}}</p>
+  				<p class="text-right">{{footer?footer.sh_addr_en:''}}</p>
+  				<!-- <p class="text-right">PuTuo District, Shanghai</p> -->
+  				<p class="text-right qrcodebox"><img :src="footer?baseUrl+footer.sh_qrcode:''" class="qrcode"></p>
+  				<p class="text-right qrcode1txt">扫描二维码</br>关注翼飞客智能科技</p>
+  			</div>
+  			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 footright">
+  				<p class="text-left beijing">北京公司</p>
+  				<p class="text-left">{{footer?footer.bj_addr:''}}</p>
+  				<p class="text-left">{{footer?footer.bj_addr_en:''}} </p>
+  				<!-- <p class="text-left">Chaoyang District, Beijing</p> -->
+  				<p class="text-left qrcodebox"><img :src="footer?baseUrl+footer.bj_qrcode:''" class="qrcode"></p>
+  				<p class="text-left qrcode2txt">扫描二维码</br>关注易景堂数字科技</p>
+  			</div>
+  		</div>
+  		<div class="mobileQrcode">
+  			<img :src="footer?baseUrl+footer.sh_qrcode:''" style="margin-right: 15px;"/>
+  			<img :src="footer?baseUrl+footer.bj_qrcode:''"style="margin-left: 15px;"/></br>
+  			<p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
+  			<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
+  		</div>
+  	</div>
+  	<div class="blackTxt">{{siteInfo?siteInfo.copyright:''}}</div>
   </section>
 </div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -346,8 +372,8 @@
     							$('#masterslider').append(strlist);
     								if(i==listB.length-1){
     											sliderSb.setup('masterslider', {
-    												width: 600,
-    												height: 500,
+    												width: 1200,
+    												height: 800,
     												space: 3,
     												view:'basic'
     											});

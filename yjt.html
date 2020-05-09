@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>易景棠</title>
-    <link rel="stylesheet" href="frontend/css/bootstrap.min.css" >
-
-    <link rel='stylesheet' href='frontend/css/masterslider.css'      type='text/css'/>
-    <link rel='stylesheet' href='frontend/css/ms-showcase2.css'      type='text/css'/>
-    <link rel='stylesheet' href='frontend/css/masterslider.main.css' type='text/css'/>
-
-    <link rel="stylesheet" href="frontend/css/style.css">
-    <link rel="stylesheet" href="frontend/css/style2.css">
+   <link rel="stylesheet" href="frontend/css/bootstrap.min.css" >
+   
+   <link rel='stylesheet' href='frontend/css/masterslider.css'      type='text/css'/>
+   <link rel='stylesheet' href='frontend/css/ms-showcase2.css'      type='text/css'/>
+   <link rel='stylesheet' href='frontend/css/masterslider.main.css' type='text/css'/>
+   
+   <link rel="stylesheet" href="frontend/css/style.css">
+   <link rel="stylesheet" href="frontend/css/style2.css">
     <!--[if lt IE 9]>
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
@@ -71,13 +71,12 @@
       <div class="ztSamllTit">Metal Lab</div>
       <div class="container clearPadding pb_padding mobie_padding">
           <div class="row clearMargin mt60">
-            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6">
+            <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                   <ul class="expmenu lf tab-hd" style="width:85%;">
-										
                         <li v-for="(item,index) in mantouList" :key="index" @click="getMv(item.scode,index)" :class="index==(chooseIndex?chooseIndex:0)?'tabHdActive2':''"><span>{{item.name}}</span></li>
                   </ul>
             </div>
-						<div class="col-lg-8 col-md-6 col-sm-6 col-xs-6 videobox">
+						<div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 videobox">
 							<div  v-for="(item,index) in mvList" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 videobox" :key="index">
 									<video :src="baseUrl+item.ext_mp4" width="100%"  autoplay="false" poster="frontend/img/v.jpg"></video>
 									<span class="text-center line1">{{item.title}}</span>
@@ -168,8 +167,8 @@
 				</div>
 			</div>
 			<div class="mobileQrcode">
-				<img src="frontend/img/qrcode1.png" style="margin-right: 15px;">
-				<img src="frontend/img/qrcode2.png" style="margin-left: 15px;"></br>
+				<img :src="footer?baseUrl+footer.sh_qrcode:''" style="margin-right: 15px;"/>
+				<img :src="footer?baseUrl+footer.bj_qrcode:''"style="margin-left: 15px;"/></br>
 				<p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
 				<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
 			</div>

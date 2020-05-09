@@ -55,7 +55,7 @@
 				<div class="ztSamllTit">{{Detail?Detail.tags:''}}</div>
 			</section>
 			<!--易飞客-->
-			<section class="container-fluid clearPadding">
+			<section class="container-fluid clearPadding" v-cloak>
 				<div class="container clearPadding ">
 					<div class="row clearMargin mt60">
 						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 comcont" style="padding-right:0px !important;padding-left:0px !important;">
@@ -63,8 +63,8 @@
 								<p class="colorBlue">{{Detail?Detail.title:''}}</p>
 								<div class="spanbox" v-html="Detail?Detail.content:''"></div>
 							</div>
-							<div class="col-lg-12 col-md-6 col-sm-6">
-								<video :src="Detail?baseUrl+Detail.ext_wlmp4:''"controls="" autoplay="false" poster="frontend/img/v.jpg" class="videoWidth"></video>
+							<div class="col-lg-12 col-md-6 col-sm-6" >
+								<video v-if="Detail&&Detail.ext_wlmp4" :src="Detail?baseUrl+Detail.ext_wlmp4:''"controls="" autoplay="false" poster="frontend/img/v.jpg" class="videoWidth"></video>
 							</div>
 						</div>
 						<div class="col-lg-1"></div>
@@ -118,8 +118,8 @@
 						</div>
 					</div>
 					<div class="mobileQrcode">
-						<img src="frontend/img/qrcode1.png" style="margin-right: 15px;">
-						<img src="frontend/img/qrcode2.png" style="margin-left: 15px;"></br>
+						<img :src="footer?baseUrl+footer.sh_qrcode:''" style="margin-right: 15px;"/>
+						<img :src="footer?baseUrl+footer.bj_qrcode:''"style="margin-left: 15px;"/></br>
 						<p class="text-center" style="margin-right: 15px;">扫描二维码</br>关注翼飞客智能科技</p>
 						<p class="text-center" style="margin-left: 15px;">扫描二维码</br>关注易景堂数字科技</p>
 					</div>
@@ -281,8 +281,8 @@
 							$('#masterslider').append(strlist);
 							if (i == listB.length - 1) {
 								sliderSb.setup('masterslider', {
-									width: 600,
-									height: 500,
+									width: 1200,
+									height: 800,
 									space: 3,
 									view: 'basic'
 								});
