@@ -160,7 +160,7 @@
 				},
 				created() {
 					this.id = this.GetQueryString('id')
-					axios.post('http://awboot.dbassets.cn/api.php/Newtem/index').then(res => {
+					axios.post('http://www.awchina.cn/api.php/Newtem/index').then(res => {
 						if (res.data.code == 1) {
 							console.log(res.data)
 							let data = res.data.data
@@ -172,7 +172,7 @@
 							this.siteInfo = data.site_info
 						}
 					})
-					axios.post('http://awboot.dbassets.cn/api.php/content/' + this.id).then(res => {
+					axios.post('http://www.awchina.cn/api.php/content/' + this.id).then(res => {
 						if (res.data.code == 1) {
 							console.log(res.data)
 							this.industry = res.data.data
@@ -230,7 +230,7 @@
 					},
 					getDetail(id) {
 						this.mvList = []
-						axios.post('http://awboot.dbassets.cn/api.php/list/' + id).then(res => {
+						axios.post('http://www.awchina.cn/api.php/list/' + id).then(res => {
 							if (res.data.code == 1) {
 								console.log(res.data)
 								this.Detail = res.data.data

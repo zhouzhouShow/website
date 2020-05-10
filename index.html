@@ -102,10 +102,10 @@
 		}
 		
 		
-		@media (max-width: 768px){
+		@media (max-width: 759px){
 			div.gugong{
 				width:50%;
-				height:140px;
+				height:100px;
 			}
 		}
 		@media (max-width: 1200px){
@@ -264,7 +264,7 @@
 		<section class="container-fluid clearPadding blueBg mt60">
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin">
-					<div class="col-md-4 col-sm-6 col-xs-6 gugong bos" @click="toDetail(item.id)" v-for="(item,index) in wlList" :key="index">						<div class="hoverBox"> 							<img src="frontend/img/blue.png" width="100%">							<div class="ggtext">								<p class="ggName">{{item.title}}</p>								<p class="ggXm ft14">项目：裔绘时尚岛</p>								<p class="ggTmie ft14">时间：2019.4.24</p>								<p class="ggAddress ft14">地址：北京</p>								<p class="ggCont ft14">运用新媒体交互技术，以战略、营销、客户体验为核心，给观众带来最新视觉、科技、新未来的崭新形式。</p>							</div>							<b class="play"></b>						</div>						<div class="bgImg">							<img :src="baseUrl+item.ext_bigimg" width="100%">						</div>					</div>
+					<div class="col-md-4 col-sm-6 col-xs-6 gugong bos" @click="toDetail(item.id)" v-for="(item,index) in wlList" :key="index">						<div class="hoverBox"> 							<img src="frontend/img/blue.png" width="100%">							<div class="ggtext">								<p class="ggName">{{item.title}}</p>								<p class="ggXm ft14">项目：{{item.ext_project_name}}</p>								<p class="ggTmie ft14">时间：{{item.ext_project_time}}</p>								<p class="ggAddress ft14">地址：{{item.ext_project_addr}}</p>								<p class="ggCont ft14">{{item.ext_project_desc}}</p>							</div>							<b class="play"></b>						</div>						<div class="bgImg">							<img :src="baseUrl+item.ext_bigimg" width="100%">						</div>					</div>
 				
 				
 					<!-- <div class="col-md-4 col-sm-6 col-xs-6 gugong bos" >
@@ -436,7 +436,7 @@
 					if (ww <= 1200) {
 						this.showBaner = false
 					}
-					axios.post('http://awboot.dbassets.cn/api.php/Newtem/index').then(res=>{
+					axios.post('http://www.awchina.cn/api.php/Newtem/index').then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							let data = res.data.data
@@ -452,7 +452,7 @@
 							},1000)
 						}
 					})
-					axios.post('http://awboot.dbassets.cn/api.php/list/24/num/6').then(res=>{
+					axios.post('http://www.awchina.cn/api.php/list/24/num/6').then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							this.industry = res.data.data
@@ -475,7 +475,7 @@
 						}
 					},
 					getWLJQ(){
-						axios.post('http://awboot.dbassets.cn/api.php/list/8/num/6').then(res => {
+						axios.post('http://www.awchina.cn/api.php/list/8/num/6').then(res => {
 							if (res.data.code == 1) {
 								console.log(res.data)
 								this.wlList = res.data.data
@@ -495,6 +495,9 @@
 					
 					scrollToFooter(){
 						$('html,body').animate({scrollTop:$('.footer').offset().top}, 500);
+					},
+					formDate(time){
+						return time.slice()
 					},
 					getDate(date){
 						// console.log(date)
