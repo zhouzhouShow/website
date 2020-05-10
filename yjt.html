@@ -78,7 +78,7 @@
             </div>
 						<div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 videobox">
 							<div  v-for="(item,index) in mvList" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 videobox" :key="index">
-									<video :src="baseUrl+item.ext_mp4" width="100%"  autoplay="false" poster="frontend/img/v.jpg"></video>
+									<video :src="baseUrl+item.ext_mp4" width="100%" controls=""   poster="frontend/img/v.jpg"></video>
 									<span class="text-center line1">{{item.title}}</span>
 							</div>
 						</div>

@@ -109,6 +109,42 @@ li.search img{
 }
 .gugong{
 	position: relative;
+	transition: all 1s;
+	width:400px;
+	height:260px;
+}
+.gugong:hover .hoverBox{
+	z-index: 999;
+	cursor: pointer;
+	opacity: 1;
+	width:100%;
+	height:100%;
+}
+.gugong:hover .hoverBox img{
+	width:100%;
+	height:100%;
+}
+.gugong>.hoverBox{
+	z-index: 0;
+	position: absolute;
+	left: 0;
+	opacity: 0;
+	transition: all .6s;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+.bgImg{
+	position: absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height: 100%;
+	
+}
+.bgImg img{
+	width:100%;
+	height:100%;
 }
 .gugong .ggtext{
 	width: 90%;

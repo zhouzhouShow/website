@@ -102,6 +102,24 @@
 		}
 		
 		
+		@media (max-width: 768px){
+			div.gugong{
+				width:50%;
+				height:140px;
+			}
+		}
+		@media (max-width: 1200px){
+			.gugong{
+				width:50%;
+				height:220px;
+			}
+		}
+		@media (min-width: 1201px){
+			div.gugong{
+				width:400px;
+				height:260px;
+			}
+		}
 	</style>
 	<body >
 	<div id="app" v-cloak>
@@ -153,7 +171,7 @@
 							<p class="t1">{{item.title}}</p>
 							<p class="t2">{{item.subtitle}}</p>
 							
-							<!-- <p class="t3">Science and technology empowering the scenic spots and urban space </p> -->
+							<p class="t3">Science and technology empowering the scenic spots and urban space </p>
 						</div>
 					</div>
 			<!-- 		<div class="swiper-slide" style="background:url(frontend/img/banner.jpg) no-repeat;background-size: cover;background-position: center center">
@@ -246,22 +264,16 @@
 		<section class="container-fluid clearPadding blueBg mt60">
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin">
-					<div class="col-md-4 col-sm-6 col-xs-6 gugong bos">
-						<img src="frontend/img/blue.png" width="100%">
-						<div class="ggtext">
-							<p class="ggName">故宫金榜题名</p>
-							<p class="ggXm ft14">项目：裔绘时尚岛</p>
-							<p class="ggTmie ft14">时间：2019.4.24</p>
-							<p class="ggAddress ft14">地址：北京</p>
-							<p class="ggCont ft14">运用新媒体交互技术，以战略、营销、客户体验为核心，给观众带来最新视觉、科技、新未来的崭新形式。</p>
-						</div>
-						<b class="play"></b>
-					</div>
-					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img2.png" width="100%"></div>
-					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img3.png" width="100%"></div>
-					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img4.png" width="100%"></div>
-					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img5.png" width="100%"></div>
-					<div class="col-md-4 col-sm-6 col-xs-6 bos"><img src="frontend/img/img6.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 gugong bos" @click="toDetail(item.id)" v-for="(item,index) in wlList" :key="index">						<div class="hoverBox"> 							<img src="frontend/img/blue.png" width="100%">							<div class="ggtext">								<p class="ggName">{{item.title}}</p>								<p class="ggXm ft14">项目：裔绘时尚岛</p>								<p class="ggTmie ft14">时间：2019.4.24</p>								<p class="ggAddress ft14">地址：北京</p>								<p class="ggCont ft14">运用新媒体交互技术，以战略、营销、客户体验为核心，给观众带来最新视觉、科技、新未来的崭新形式。</p>							</div>							<b class="play"></b>						</div>						<div class="bgImg">							<img :src="baseUrl+item.ext_bigimg" width="100%">						</div>					</div>
+				
+				
+					<!-- <div class="col-md-4 col-sm-6 col-xs-6 gugong bos" >
+						<img src="frontend/img/img2.png" width="100%">
+						</div> -->
+					<!-- <div class="col-md-4 col-sm-6 col-xs-6 bos gugong"><img src="frontend/img/img3.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos gugong"><img src="frontend/img/img4.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos gugong"><img src="frontend/img/img5.png" width="100%"></div>
+					<div class="col-md-4 col-sm-6 col-xs-6 bos gugong"><img src="frontend/img/img6.png" width="100%"></div> -->
 				</div>
 				<div class="row shuZi mt60 clearMargin">
 					<div>
@@ -293,7 +305,7 @@
 			<div class="container clearPadding pb_padding mobie_padding">
 				<div class="row clearMargin">
 					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt60 of hovBox" v-for="(item,index) in industry" :key="index">
-						<div class="listBox fl">
+						<div class="listBox fl" @click.stop="toDetail(item.id)">
 							<div class="date">
 								<p class="month">{{getDate(item.date).str}}</p>
 								<p class="day">{{getDate(item.date).date}}</p>
@@ -414,6 +426,7 @@
 						siteInfo:null,
 						baseUrl:'',
 						industry:[],
+						wlList:[], //文旅list
 						DateStrList:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
 						
 					}
@@ -439,17 +452,21 @@
 							},1000)
 						}
 					})
-					axios.post('http://awboot.dbassets.cn/api.php/list/24').then(res=>{
+					axios.post('http://awboot.dbassets.cn/api.php/list/24/num/6').then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							this.industry = res.data.data
 						}
 					})
+					this.getWLJQ() //文旅景区数据
 					
 
 					
 				},
 				methods:{
+					toDetail(id){
+						location.href = 'yfk.html?id='+id
+					},
 					toPage(url){
 						if(url=='toFooter'){
 							this.scrollToFooter()
@@ -457,6 +474,25 @@
 							location.href = url+'.html'
 						}
 					},
+					getWLJQ(){
+						axios.post('http://awboot.dbassets.cn/api.php/list/8/num/6').then(res => {
+							if (res.data.code == 1) {
+								console.log(res.data)
+								this.wlList = res.data.data
+								// let arr = _.groupBy(res.data.data,'sortname')
+								// let keys = Object.keys(arr)
+								// let newArr = [];
+								// for(let item of keys){
+								// 	newArr.push({
+								// 		name:item,
+								// 		list:arr[item],
+								// 	})
+								// }
+								// this.industry = newArr
+							}
+						})
+					},
+					
 					scrollToFooter(){
 						$('html,body').animate({scrollTop:$('.footer').offset().top}, 500);
 					},
