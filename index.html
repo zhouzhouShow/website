@@ -436,7 +436,7 @@
 					if (ww <= 1200) {
 						this.showBaner = false
 					}
-					axios.post('http://www.awchina.cn/api.php/Newtem/index').then(res=>{
+					axios.post('http://www.awchina.abctlw.cn/api.php/Newtem/index').then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							let data = res.data.data
@@ -452,7 +452,7 @@
 							},1000)
 						}
 					})
-					axios.post('http://www.awchina.cn/api.php/list/24/num/6').then(res=>{
+					axios.post('http://www.awchina.abctlw.cn/api.php/list/24/num/6').then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							this.industry = res.data.data
@@ -475,7 +475,7 @@
 						}
 					},
 					getWLJQ(){
-						axios.post('http://www.awchina.cn/api.php/list/8/num/6').then(res => {
+						axios.post('http://www.awchina.abctlw.cn/api.php/list/8/num/6').then(res => {
 							if (res.data.code == 1) {
 								console.log(res.data)
 								this.wlList = res.data.data

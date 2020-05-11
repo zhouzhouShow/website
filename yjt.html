@@ -78,7 +78,7 @@
             </div>
 						<div class="col-lg-8 col-md-6 col-sm-12 col-xs-12 videobox">
 							<div  v-for="(item,index) in mvList" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 videobox" :key="index">
-									<video :src="baseUrl+item.ext_mp4" width="100%" controls=""   poster="frontend/img/v.jpg"></video>
+									<video :src="baseUrl+item.ext_mp4" width="100%" controls=""  ></video>
 									<span class="text-center line1">{{item.title}}</span>
 							</div>
 						</div>
@@ -216,7 +216,7 @@
 				if (ww <= 1200) {
 					this.showBaner = false
 				}
-				axios.post('http://www.awchina.cn/api.php/Newtem/index').then(res=>{
+				axios.post('http://www.awchina.abctlw.cn/api.php/Newtem/index').then(res=>{
 					if(res.data.code == 1){
 						console.log(res.data)
 						let data = res.data.data
@@ -233,7 +233,7 @@
 					}
 				})
 				
-				axios.post('http://www.awchina.cn/api.php/cms/nav/scode/32').then(res=>{
+				axios.post('http://www.awchina.abctlw.cn/api.php/cms/nav/scode/32').then(res=>{
 					if(res.data.code == 1){
 						console.log(res.data)
 						this.mantouList = res.data.data
@@ -259,7 +259,7 @@
 				getMv(id,index){
 					this.chooseIndex = index
 					this.mvList = []
-					axios.post('http://www.awchina.cn/api.php/list/'+id).then(res=>{
+					axios.post('http://www.awchina.abctlw.cn/api.php/list/'+id).then(res=>{
 						if(res.data.code == 1){
 							console.log(res.data)
 							for(let item of res.data.data){

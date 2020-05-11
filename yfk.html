@@ -64,7 +64,7 @@
 								<div class="spanbox" v-html="Detail?Detail.content:''"></div>
 							</div>
 							<div class="col-lg-12 col-md-6 col-sm-6" >
-								<video v-if="Detail&&Detail.ext_wlmp4" :src="Detail?baseUrl+Detail.ext_wlmp4:''"controls=""  poster="frontend/img/v.jpg" class="videoWidth"></video>
+								<video v-if="Detail&&Detail.ext_wlmp4" :src="Detail?baseUrl+Detail.ext_wlmp4:''"controls=""   class="videoWidth"></video>
 							</div>
 						</div>
 						<div class="col-lg-1"></div>
@@ -160,7 +160,7 @@
 				},
 				created() {
 					this.id = this.GetQueryString('id')
-					axios.post('http://www.awchina.cn/api.php/Newtem/index').then(res => {
+					axios.post('http://www.awchina.abctlw.cn/api.php/Newtem/index').then(res => {
 						if (res.data.code == 1) {
 							console.log(res.data)
 							let data = res.data.data
@@ -172,11 +172,12 @@
 							this.siteInfo = data.site_info
 						}
 					})
-					axios.post('http://www.awchina.cn/api.php/content/' + this.id).then(res => {
+					axios.post('http://www.awchina.abctlw.cn/api.php/content/' + this.id).then(res => {
 						if (res.data.code == 1) {
 							console.log(res.data)
 							this.industry = res.data.data
 							this.Detail = this.industry
+							document.title =this.Detail.title
 							this.slider = this.getBanner(this.industry.pics)
 							setTimeout(() => {
 								this.reload(this.slider)
@@ -230,7 +231,7 @@
 					},
 					getDetail(id) {
 						this.mvList = []
-						axios.post('http://www.awchina.cn/api.php/list/' + id).then(res => {
+						axios.post('http://www.awchina.abctlw.cn/api.php/list/' + id).then(res => {
 							if (res.data.code == 1) {
 								console.log(res.data)
 								this.Detail = res.data.data
